@@ -4,13 +4,14 @@ import axios from "axios";
 async function handler(req, res) {
   const options = {
     method: "GET",
-    url: "https://genius-song-lyrics1.p.rapidapi.com/search",
-    params: { q: req.query.title, per_page: "10", page: "1" },
+    url: "https://genius-song-lyrics1.p.rapidapi.com/search/",
+    params: { q: req.query.inputSearch, per_page: "9", page: "1" },
     headers: {
-      "x-rapidapi-host": "genius-song-lyrics1.p.rapidapi.com",
-      "x-rapidapi-key": process.env.RAPIDAPI_KEY,
+      "X-RapidAPI-Key": process.env.RAPIDAPI_KEY,
+      "X-RapidAPI-Host": "genius-song-lyrics1.p.rapidapi.com",
     },
   };
+
   try {
     let response = await axios(options);
     res.status(200).json(response.data);
