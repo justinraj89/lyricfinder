@@ -7,7 +7,7 @@ async function handler(req, res) {
   const options = {
     method: 'GET',
     url: 'https://genius-song-lyrics1.p.rapidapi.com/song/lyrics/',
-    params: {id: req.query.id},
+    params: {id: req.query.id, text_format: 'plain'},
     headers: {
       'X-RapidAPI-Key': process.env.RAPIDAPI_KEY,
       'X-RapidAPI-Host': 'genius-song-lyrics1.p.rapidapi.com'
@@ -24,12 +24,3 @@ async function handler(req, res) {
 
 export default handler;
 
-
-// const options = {
-//   method: "GET",
-//   url: `https://genius-song-lyrics1.p.rapidapi.com/songs/${req.query.id}/lyrics`,
-//   headers: {
-//     "x-rapidapi-host": "genius-song-lyrics1.p.rapidapi.com",
-//     "x-rapidapi-key": process.env.RAPIDAPI_KEY,
-//   },
-// };

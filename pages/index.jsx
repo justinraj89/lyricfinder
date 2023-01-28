@@ -22,12 +22,12 @@ function Home() {
 
   const getLyrics = async (id) => {
     try {
-      setSearchResults(''); // Remove the results
-      const res = await axios.get('api/lyrics/', {
-        params: {id}
+      setSearchResults(""); // Remove the results
+      const res = await axios.get("api/lyrics/", {
+        params: { id },
       });
-      const {data} = res;
-      console.log(data, 'DATA FROM GET LYRICS FUNCTION')
+      const { data } = res;
+      console.log(data, "DATA FROM GET LYRICS FUNCTION");
       setLyrics(data.lyrics);
     } catch (error) {
       console.error(error);
@@ -113,6 +113,18 @@ function Home() {
               </div>
             ))}
           </div>
+        </div>
+      )}
+
+      {lyrics && (
+        <div className="mt-10 max-w-3xl">
+          <h2 className="text-2xl font-bold text-center text-stone-50">
+            Lyrics for{' '} 
+            <span className="text-rose-400">{lyrics.tracking_data.title}</span>
+          </h2>
+         <p className="mt-6 leading-loose text-stone-50 text-xl">
+            {lyrics.lyrics.body.plain}
+          </p> 
         </div>
       )}
     </div>
